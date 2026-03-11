@@ -1,0 +1,590 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #2b1b0e 0%, #4a2c1a 100%);
+    min-height: 100vh;
+    padding: 30px 20px;
+    position: relative;
+}
+
+/* Food pattern overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 215, 150, 0.1) 2%, transparent 3%),
+        radial-gradient(circle at 75% 75%, rgba(255, 215, 150, 0.1) 2%, transparent 3%);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Main Title */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 3px 3px 0 #ff9f4b, 6px 6px 0 rgba(0,0,0,0.2);
+    letter-spacing: 2px;
+    animation: floatIn 0.8s ease-out;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+h1::before, h1::after {
+    content: '🍕';
+    font-size: 3rem;
+    position: absolute;
+    opacity: 0.7;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+h1::before {
+    left: 10%;
+    top: -20px;
+    transform: rotate(-15deg);
+    animation-delay: 0.2s;
+}
+
+h1::after {
+    right: 10%;
+    top: -20px;
+    transform: rotate(15deg);
+    animation-delay: 0.4s;
+}
+
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: rotate(-15deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-15deg) translateY(-10px);
+    }
+}
+
+h1::after {
+    animation-name: bounceRight;
+}
+
+@keyframes bounceRight {
+    0%, 100% {
+        transform: rotate(15deg) translateY(0);
+    }
+    50% {
+        transform: rotate(15deg) translateY(-10px);
+    }
+}
+
+/* Search Form */
+.search-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 50px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.5);
+    margin-bottom: 40px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 150, 0.5);
+    transition: all 0.3s ease;
+}
+
+.search-form:hover {
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    border-color: #ff9f4b;
+}
+
+.search-form input[type="text"] {
+    padding: 16px 25px;
+    border: 3px solid transparent;
+    border-radius: 40px;
+    font-size: 16px;
+    flex: 1;
+    min-width: 250px;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #2b1b0e;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-form input[type="text"]::placeholder {
+    color: #a89b91;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.search-form input[type="text"]:focus {
+    outline: none;
+    border-color: #ff9f4b;
+    box-shadow: 0 0 0 5px rgba(255, 159, 75, 0.2), inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-form select {
+    padding: 16px 30px;
+    border: 3px solid transparent;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23ff9f4b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #2b1b0e;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-form select:hover {
+    border-color: #ff9f4b;
+}
+
+.search-form select:focus {
+    outline: none;
+    border-color: #ff9f4b;
+    box-shadow: 0 0 0 5px rgba(255, 159, 75, 0.2);
+}
+
+.search-form button {
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #ff9f4b 0%, #ff6b4b 100%);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(255, 107, 75, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.search-form button::before {
+    content: '🔍';
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.search-form button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(255, 107, 75, 0.4);
+    background: linear-gradient(135deg, #ffb15e 0%, #ff7e5e 100%);
+}
+
+.search-form button:active {
+    transform: translateY(-1px);
+}
+
+/* Menu Cards */
+.card {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(255, 159, 75, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Food item decoration */
+.card::before {
+    content: '🍽️';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    opacity: 0.15;
+    transform: rotate(15deg);
+    transition: all 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 0.3;
+    transform: rotate(25deg) scale(1.1);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff9f4b, #ff6b4b, #ff9f4b);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.card:hover::after {
+    transform: scaleX(1);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(255, 107, 75, 0.3);
+    border-color: #ff9f4b;
+}
+
+.card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #2b1b0e;
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+    padding-right: 60px;
+}
+
+.card h2::before {
+    content: '•';
+    color: #ff9f4b;
+    font-size: 3rem;
+    position: absolute;
+    left: -25px;
+    top: -10px;
+    opacity: 0.5;
+}
+
+.card p {
+    color: #5a4a3a;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card p strong {
+    color: #ff9f4b;
+    font-weight: 700;
+    min-width: 90px;
+    font-size: 1.1rem;
+}
+
+.card p:last-of-type {
+    margin-bottom: 20px;
+}
+
+/* Price styling */
+.card p:nth-of-type(2) {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2b1b0e;
+    background: linear-gradient(135deg, #fff5e9 0%, #ffe4d6 100%);
+    padding: 8px 20px;
+    border-radius: 50px;
+    display: inline-block;
+    border: 2px dashed #ff9f4b;
+}
+
+/* Availability badges */
+.available {
+    color: #2b8c5e;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    background: rgba(43, 140, 94, 0.1);
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 2px solid rgba(43, 140, 94, 0.3);
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.available::before {
+    content: '✨';
+    margin-right: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.available:hover::before {
+    opacity: 1;
+}
+
+.available:hover {
+    background: rgba(43, 140, 94, 0.15);
+    transform: scale(1.05);
+    border-color: #2b8c5e;
+    box-shadow: 0 5px 15px rgba(43, 140, 94, 0.3);
+    padding-left: 35px;
+}
+
+.checkmark {
+    background: #2b8c5e;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(43, 140, 94, 0.4);
+    animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0) rotate(-180deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+.not-available {
+    color: #d14545;
+    font-weight: 700;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(209, 69, 69, 0.1);
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 2px solid rgba(209, 69, 69, 0.3);
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.not-available::before {
+    content: '⏳';
+    margin-right: 5px;
+    opacity: 0.7;
+}
+
+.not-available:hover {
+    background: rgba(209, 69, 69, 0.15);
+    transform: scale(1.05);
+    border-color: #d14545;
+    padding-left: 35px;
+}
+
+/* No results card */
+.no-results {
+    text-align: center;
+    padding: 60px 30px;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px dashed #ff9f4b;
+    position: relative;
+}
+
+.no-results::before {
+    content: '🔍❌';
+    display: block;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: wobble 2s infinite ease-in-out;
+}
+
+@keyframes wobble {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h1::before, h1::after {
+        font-size: 2rem;
+    }
+    
+    h1::before {
+        left: 5%;
+    }
+    
+    h1::after {
+        right: 5%;
+    }
+    
+    .search-form {
+        padding: 20px;
+        border-radius: 30px;
+    }
+    
+    .search-form input[type="text"],
+    .search-form select,
+    .search-form button {
+        width: 100%;
+        min-width: 100%;
+        padding: 14px 20px;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+    
+    .card h2 {
+        font-size: 1.8rem;
+        padding-right: 40px;
+    }
+    
+    .card h2::before {
+        left: -15px;
+        font-size: 2rem;
+    }
+    
+    .card p {
+        font-size: 1rem;
+    }
+    
+    .card p strong {
+        min-width: 80px;
+    }
+    
+    .available, .not-available {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h1::before, h1::after {
+        display: none;
+    }
+    
+    .card h2 {
+        font-size: 1.6rem;
+    }
+    
+    .card p:nth-of-type(2) {
+        font-size: 1.1rem;
+    }
+}
+
+/* Selection styling */
+::selection {
+    background: #ff9f4b;
+    color: white;
+}
+
+/* Focus states for accessibility */
+:focus-visible {
+    outline: 3px solid #ff9f4b;
+    outline-offset: 3px;
+    border-radius: 40px;
+}
+
+/* Loading animation for future use */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2b1b0e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff9f4b, #ff6b4b);
+    border-radius: 6px;
+    border: 3px solid #2b1b0e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ffb15e, #ff7e5e);
+}
